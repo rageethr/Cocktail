@@ -88,15 +88,6 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink)}
           </div>
         </fieldset>
 
-        <div class="field" id="countWrap">
-          <div class="legend">Number of guests, including you</div>
-          <div class="count">
-            <button type="button" id="minus" aria-label="Fewer guests">−</button>
-            <output id="count">1</output>
-            <button type="button" id="plus" aria-label="More guests">+</button>
-          </div>
-        </div>
-
         <div class="field">
           <label for="note">A note for the couple</label>
           <textarea id="note" placeholder="Optional"></textarea>
@@ -125,14 +116,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink)}
 
 <script>
 const WHATSAPP_NUMBER = "919620719616"; // country code + number, digits only, e.g. 919876543210
-let n = 1;
 const $ = id => document.getElementById(id);
-const setCount = v => { n = Math.max(1, Math.min(8, v)); $("count").textContent = n; };
-$("minus").onclick = () => setCount(n - 1);
-$("plus").onclick = () => setCount(n + 1);
-document.querySelectorAll('input[name=att]').forEach(r => r.addEventListener("change", () => {
-  $("countWrap").hidden = $("att-no").checked;
-}));
 let text = "";
 $("f").addEventListener("submit", e => {
   e.preventDefault();
@@ -145,7 +129,7 @@ $("f").addEventListener("submit", e => {
   const note = $("note").value.trim();
   text = "RSVP: Cocktail Evening, Nov 16\n" +
     "Name: " + name + "\n" +
-    (yes ? "Attending: Yes, " + n + (n === 1 ? " person" : " people") : "Attending: No, can't make it") +
+    (yes ? "Attending: Yes, I'll be there" : "Attending: No, can't make it") +
     (note ? "\nNote: " + note : "");
   $("msg").textContent = text;
   const base = WHATSAPP_NUMBER && !WHATSAPP_NUMBER.startsWith("__") ? "https://wa.me/" + WHATSAPP_NUMBER : "https://wa.me/";

@@ -1,4 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta property="og:title" content="Rageeth &amp; Madhuri's Cocktail Evening"><meta property="og:description" content="Monday, November 16, 8 pm at Kaze Bar and Kitchen. Kindly reply."><style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Cocktail Evening RSVP</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rageethr.github.io/cocktail/">
+<meta property="og:title" content="Rageeth &amp; Madhuri's Cocktail Evening">
+<meta property="og:description" content="Monday, November 16, 2026, 8 pm at Kaze Bar and Kitchen, Bangalore. Kindly reply.">
+<meta property="og:image" content="https://rageethr.github.io/cocktail/card.jpg">
+<meta property="og:image:secure_url" content="https://rageethr.github.io/cocktail/card.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="760">
+<meta property="og:image:height" content="1140">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rageethr.github.io/cocktail/card.jpg">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Cocktail Evening RSVP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
@@ -76,15 +88,6 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink)}
           </div>
         </fieldset>
 
-        <div class="field" id="countWrap">
-          <div class="legend">Number of guests, including you</div>
-          <div class="count">
-            <button type="button" id="minus" aria-label="Fewer guests">−</button>
-            <output id="count">1</output>
-            <button type="button" id="plus" aria-label="More guests">+</button>
-          </div>
-        </div>
-
         <div class="field">
           <label for="note">A note for the couple</label>
           <textarea id="note" placeholder="Optional"></textarea>
@@ -113,14 +116,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink)}
 
 <script>
 const WHATSAPP_NUMBER = "919746056217"; // country code + number, digits only, e.g. 919876543210
-let n = 1;
 const $ = id => document.getElementById(id);
-const setCount = v => { n = Math.max(1, Math.min(8, v)); $("count").textContent = n; };
-$("minus").onclick = () => setCount(n - 1);
-$("plus").onclick = () => setCount(n + 1);
-document.querySelectorAll('input[name=att]').forEach(r => r.addEventListener("change", () => {
-  $("countWrap").hidden = $("att-no").checked;
-}));
 let text = "";
 $("f").addEventListener("submit", e => {
   e.preventDefault();
@@ -133,7 +129,7 @@ $("f").addEventListener("submit", e => {
   const note = $("note").value.trim();
   text = "RSVP: Cocktail Evening, Nov 16\n" +
     "Name: " + name + "\n" +
-    (yes ? "Attending: Yes, " + n + (n === 1 ? " person" : " people") : "Attending: No, can't make it") +
+    (yes ? "Attending: Yes, I'll be there" : "Attending: No, can't make it") +
     (note ? "\nNote: " + note : "");
   $("msg").textContent = text;
   const base = WHATSAPP_NUMBER && !WHATSAPP_NUMBER.startsWith("__") ? "https://wa.me/" + WHATSAPP_NUMBER : "https://wa.me/";
